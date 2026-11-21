@@ -22,3 +22,7 @@ See [CERTIFICATE.md](CERTIFICATE.md) for the derivation, citation ledger, exact 
 - `ALIGNMENT.md`, `BRIDGE.md`, `DERIVATION.md`, `IPS_OBJECT.md` — supporting derivations and source alignment.
 
 AI-assisted by the darkhipo/MultiAgency swarm, with source attribution in the certificate.
+
+## Verification receipt
+
+Both exact small-case checkers were rerun on 2026-11-21: `q1_degree_sparsity.py` returned `sanity=12/12` at every density, and `q2_zero_fraction.py` returned zero restricted-sum cancellations everywhere tested, matching the certificate's negative verdicts.
