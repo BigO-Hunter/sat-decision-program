@@ -1,0 +1,36 @@
+name: Certificate reproduction
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    name: Rerun exact certificate checkers
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out the program
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Set up Python environment
+        run: |
+          python3 -m venv .venv
+          .venv/bin/python -m pip install --upgrade pip numpy
+      - name: q1 degree/sparsity of H (verdict A)
+        run: .venv/bin/python q1_degree_sparsity.py
+      - name: q2 restricted-sum zero fractions (verdict C)
+        run: .venv/bin/python q2_zero_fraction.py
+      - name: q3 IPS-object checks
+        run: .venv/bin/python q3_ips_check.py
+      # q4_gate_verification.py is deliberately not run here: its exact mod-p
+      # span fit enumerates ~2M clause-subset columns (C(35,<=6)) with
+      # object-dtype Gaussian elimination — hours-scale and memory-heavy,
+      # beyond a hosted runner's fit. Its recorded verdict lives in
+      # CERTIFICATE.md. q5 below reproduces the Hermite/count-polynomial
+      # pipeline (recorded run: ~300s, see q5_results.txt).
+      - name: q5 Hermite/count-polynomial pipeline
+        run: .venv/bin/python q5_hermite_pipeline.py
