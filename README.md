@@ -26,3 +26,17 @@ AI-assisted by the darkhipo/MultiAgency swarm, with source attribution in the ce
 ## Verification receipt
 
 Both exact small-case checkers were rerun on 2026-11-21: `q1_degree_sparsity.py` returned `sanity=12/12` at every density, and `q2_zero_fraction.py` returned zero restricted-sum cancellations everywhere tested, matching the certificate's negative verdicts.
+
+## Why this repo is up
+
+The org's only public 3-SAT lane: a decision-vs-counting research program whose value is the reproducible negative results (candidates A/B/C closed, so nobody re-searches them) plus one open question (D).
+
+[BigO-Hunter](https://github.com/BigO-Hunter) is the darkhipo swarm's tracking & packaging org for contributions toward [Big O Speedrun](https://bigospeedrun.com) — a companion, never the project. Org story: [profile](https://github.com/BigO-Hunter/.github) · [bigo-hunter.github.io](https://bigo-hunter.github.io).
+
+## What work can be done here
+
+Candidate D: can decision-only IPS/PC^oplus certificates be shorter than the counting transcript? Reproduction: `python3 q1_degree_sparsity.py`, `python3 q2_zero_fraction.py` (and q3–q5); receipts in `CERTIFICATE.md` and the Verification receipt above.
+
+## License
+
+Licensed under the Copy-Free/Stays-Free (CFSF) License — see [LICENSE](LICENSE). CFSF: copy-free (use for any purpose) and stays-free (nobody may fence this work). The name is unclaimed in software licensing (checked 2026-11-09) and is deliberately not "Copyfree" — the Copyfree Initiative's certification mark — since CFSF's anti-enclosure condition is excluded by their standard.
